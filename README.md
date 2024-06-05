@@ -5,25 +5,25 @@ grss (pronounced grass) is simple grep clone. It takes a file and a pattern and 
 
 Some main points learnt on this project
 
-1.  Parsing Command line arguments
+1.  ## Parsing Command line arguments
 
     Using `std::env::args` then upgrading to `Clap::Parser`
 
-2.  Using a buffer to read large files
+2.  ## Using a buffer to read large files
 
     Using `std::fs::read_to_string(&path)` could potentially be harmful as it loads entire file into memory. We use `std::io::BufReader` instead
 
-3.  Error handling and reporting
+3.  ## Error handling and reporting
 
-    Unwrapping options:
+    ### Unwrapping options:
 
-    a. unsafe unwrap
+    #### a. unsafe unwrap
 
           ```Rust
           let result = std::fs::read_to_string("test.txt").unwrap();
           ```
 
-    b. match
+    #### b. match
 
     ```Rust
     let content = match result {
@@ -32,7 +32,8 @@ Some main points learnt on this project
     };
     ```
 
-    c. Question Mark ?
+    #### c. Question Mark ?
+
     Just like calling `.unwrap()` is a shortcut for the match with panic, using ? is a shortcut for the match that return `S`
 
     ```Rust
@@ -43,22 +44,22 @@ Some main points learnt on this project
       }
     ```
 
-4.  Output for humans and machines
+4.  ## Output for humans and machines
 
     Use `println!` macro to print to the console to `stdout`
     use `eprintln!` to print errors to the `stderr`
 
-#### Logging
+    #### Logging
 
-    Logging is the same as using println!, except that you can specify the importance of a message. The levels you can usually use are error, warn, info, debug, and trace (error has the highest priority, trace the lowest)
+        Logging is the same as using println!, except that you can specify the importance of a message. The levels you can usually use are error, warn, info, debug, and trace (error has the highest priority, trace the lowest)
 
-    ```Rust
-    use log::{info, warn};
+        ```Rust
+        use log::{info, warn};
 
-    fn main() {
-        env_logger::init();
-        info!("starting up");
-        warn!("oops, nothing implemented!");
-    }
+        fn main() {
+            env_logger::init();
+            info!("starting up");
+            warn!("oops, nothing implemented!");
+        }
 
-    ```
+        ```
