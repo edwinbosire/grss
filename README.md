@@ -51,7 +51,7 @@ Some main points learnt on this project
 
     #### Logging
 
-        Logging is the same as using println!, except that you can specify the importance of a message. The levels you can usually use are error, warn, info, debug, and trace (error has the highest priority, trace the lowest)
+    Logging is the same as using println!, except that you can specify the importance of a message. The levels you can usually use are error, warn, info, debug, and trace (error has the highest priority, trace the lowest)
 
         ```Rust
           use log::{info, warn};
